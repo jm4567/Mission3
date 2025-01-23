@@ -3,6 +3,7 @@ internal class Program
 {
     public static void Main(string[] args)
     {
+        //creating new list for food items. global variable
         List<FoodItem> foodItems = new List<FoodItem>();
 
         Console.WriteLine("Welcome to the Food Bank Inventory System: What would you like to do? ");
@@ -11,13 +12,15 @@ internal class Program
         //error handling with the do while loop 
         do
         {
+            //user input for options they can choose to do 
             Console.WriteLine("Option 1: Add food item");
             Console.WriteLine("Option 2: Delete food items");
             Console.WriteLine("Option 3: Print current list of food items");
             Console.WriteLine("Option 4: Exit the program");
             Console.WriteLine("Enter your choice (1-4):");
-
             choice = Console.ReadLine();
+            
+            //if statement to see what the program should do based on choice 
             if (choice == "1")
             {
                 Console.WriteLine("You chose option 1");
@@ -46,6 +49,7 @@ internal class Program
 
         } while (choice != "4");
     }
+    //add food item method
     public static void AddFoodItem(List<FoodItem> foodItems)
     {
         //food name
@@ -62,7 +66,6 @@ internal class Program
         //category. 
         Console.WriteLine("Enter food item category: ");
         string category = Console.ReadLine();
-
         // Loop until the user enters a valid category
         while (string.IsNullOrWhiteSpace(category) || !IsValidString(category))
         {
@@ -91,20 +94,25 @@ internal class Program
             input = Console.ReadLine();
         }
         
+        //creating new variable to store values and add the food item into the list 
         var foodItem = new FoodItem(name, category, quantity, expirationDate);
         foodItems.Add(foodItem);
    
         Console.WriteLine("Food item added successfully.");
         Console.WriteLine();
     }
+    //delete food item method 
     public static void DeleteFoodItem(List<FoodItem>foodItems)
     {
+        //error handling if there are no food items 
         if (foodItems.Count == 0)
         {
             Console.WriteLine("No food items available to delete.");
             return;
         }
         Console.WriteLine();
+        
+        //shows current food items list 
         Console.WriteLine("Current Food Items:");
         int index = 1;
         foreach(var fooditem in foodItems)
@@ -115,6 +123,7 @@ internal class Program
         //break 
         Console.WriteLine();
         
+        //user input and validation
         Console.WriteLine("What would you like to delete? (choose which number)");
         if (!int.TryParse(Console.ReadLine(), out int choice) || choice < 1 || choice > foodItems.Count)
         {
@@ -123,19 +132,24 @@ internal class Program
             return;
         }
 
-        
+        //deleting the item at the index 
         foodItems.RemoveAt(choice - 1);
         Console.WriteLine("Food item deleted successfully.");
         Console.WriteLine();
     }
+    
+    //print method 
     public static void PrintFoodItem(List<FoodItem> foodItems)
     { 
+        //error handling if there are 0 items to list
         if (foodItems.Count == 0)
         {
             Console.WriteLine("No food items available");
+            Console.WriteLine();
             return;
         }
-        Console.WriteLine();
+
+        //current food items list 
         Console.WriteLine("Current Food Items:");
         int index = 1;
         foreach(var fooditem in foodItems)

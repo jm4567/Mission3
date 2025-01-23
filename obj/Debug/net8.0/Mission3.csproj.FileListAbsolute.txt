@@ -12,3 +12,4 @@
 /Users/jennamagleby/RiderProjects/Mission3/obj/Debug/net8.0/Mission3.pdb
 /Users/jennamagleby/RiderProjects/Mission3/obj/Debug/net8.0/Mission3.genruntimeconfig.cache
 /Users/jennamagleby/RiderProjects/Mission3/obj/Debug/net8.0/ref/Mission3.dll
+/Users/jennamagleby/RiderProjects/Mission3/obj/Debug/net8.0/Mission3.sourcelink.json
